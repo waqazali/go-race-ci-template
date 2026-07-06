@@ -1,0 +1,14 @@
+# Example consumer .gitlab-ci.yml — copy templates/ into your repo root first,
+# or include from the published gitlab.com/github project (see README).
+
+stages:
+  - test
+
+include:
+  - local: /templates/defaults.yml
+  - local: /templates/go/test-race.yml
+
+# Optional: override variables
+# test-race:
+#   variables:
+#     TEST_PATH: "./internal/..."

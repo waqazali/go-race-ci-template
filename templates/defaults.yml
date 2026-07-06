@@ -1,0 +1,17 @@
+# Shared defaults for Go CI templates.
+# Include via: - local: '/templates/defaults.yml'
+
+default:
+  retry:
+    max: 2
+    when: runner_system_failure
+
+.default-rules:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "web"
+      interruptible: true
+    - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS
+      when: never
+    - if: $CI_COMMIT_BRANCH
+    - if: $CI_COMMIT_TAG
+      when: never
