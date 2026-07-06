@@ -35,7 +35,9 @@ See [examples/gitlab-ci.yml](examples/gitlab-ci.yml).
 | `TEST_ARG` | `""` | Extra arguments passed to `go test` |
 | `CGO_ENABLED` | `1` | Required for `-race` on most platforms |
 
-The job sets `allow_failure: true` by default so race detection can run as an advisory check. Remove that line to make it blocking.
+The GitLab job sets `allow_failure: true` by default so race detection can run as an advisory check. Remove that line to make it blocking.
+
+This repository’s GitHub Actions workflow runs the sample test from `examples/sample/` (that module’s `go.mod`). In your own Go project, run `go test -race ./...` from the repo root where `go.mod` lives.
 
 ## GitHub Actions
 
